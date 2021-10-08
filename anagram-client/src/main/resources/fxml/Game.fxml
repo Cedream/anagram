@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="757.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <right>
+      <HBox prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <VBox style="-fx-padding: 10px;">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label contentDisplay="CENTER" style="-fx-padding: 1px; -fx-font-weight: bold;" text="Utilisateurs connectés">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <ListView fx:id="members" focusTraversable="false" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </right>
+   <center>
+      <StackPane maxHeight="250.0" maxWidth="350.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane fx:id="form" maxHeight="250.0" maxWidth="350.0" prefHeight="179.0" prefWidth="286.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="65.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="61.0" minHeight="2.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="word" style="-fx-font-weight: bold; -fx-font-size: 20;" text="Chargement..." GridPane.halignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="proposition" promptText="Entrez votre proposition ici.." GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#doAProposition" text="Essayer cette proposition">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#pass" text="Passer">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                     <children>
+                        <Button fx:id="disconnectBtn" mnemonicParsing="false" onAction="#disconnect" text="Se deconnecter">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="indiceBtn" mnemonicParsing="false" onAction="#indice" text="Indice?">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label style="-fx-font-weight: bold;" text="Nombre de propositions:" />
+                              <Label fx:id="nbPropositions" text="0">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label style="-fx-font-weight: bold;" text="Indice:" />
+                              <Label fx:id="indice" text="Pas d'indice">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <StackPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </StackPane.margin>
+            </GridPane>
+            <ProgressIndicator fx:id="progress" focusTraversable="false" visible="false">
+               <StackPane.margin>
+                  <Insets bottom="80.0" left="80.0" right="80.0" top="80.0" />
+               </StackPane.margin>
+            </ProgressIndicator>
+         </children>
+      </StackPane>
+   </center>
+   <left>
+      <HBox prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox style="-fx-padding: 10px;">
+               <children>
+                  <Label style="-fx-font-weight: bold;" text="Mots trouvés">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="wordsFound" focusTraversable="false" />
+                  <Label text="* Le joueur a utilisé l'indice" />
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="494.0" prefWidth="22.0" />
+         </children>
+      </HBox>
+   </left>
+</fx:root>
